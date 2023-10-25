@@ -14,7 +14,10 @@ def encode_password(password):
     encoded_password = [0,1]
     encoded_password[0:-1] = password
     for i in range(len(encoded_password)):
-        encoded_password[i] = str(int(encoded_password[i]) + 3)
+        if int(encoded_password[i]) > 6:
+            encoded_password[i] = str(int(encoded_password[i]) + 3 - 10)
+        else:
+            encoded_password[i] = str(int(encoded_password[i]) + 3)
     del encoded_password[-1]
     correct_encoded_password = ''.join(encoded_password)
     return correct_encoded_password
