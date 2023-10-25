@@ -22,6 +22,17 @@ def encode_password(password):
 #Takes in original password, turns into list, increases each element by 3,
 #then rejoins together into variable for the encoded password
 
+# method for decoding the encoded password
+def decode_password(password):
+    decodedPassword = ''
+    for i in password:
+        new_digit = int(i) - 3
+        if new_digit < 0:
+            new_digit += 10
+            decodedPassword += str(new_digit)
+        else:
+            decodedPassword += str(new_digit)
+    return decodedPassword
 def main():
     menu()
     original_password = None
@@ -38,7 +49,8 @@ def main():
             print()
             #stores original password and uses other function to get encoded password
         elif selection == 2:
-            pass
+            print("The encoded password is ", encoded_password, ",", end = '')
+            print("and the original password is ", decode_password(encoded_password), ".", sep='')
         elif selection == 3:
             x = 0
             #stops function
